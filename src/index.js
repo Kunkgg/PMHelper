@@ -1,9 +1,8 @@
 const xlsxFile = require("read-excel-file/node");
-// var Highcharts = require("highcharts");
-// Load module after Highcharts is loaded
-// require("highcharts/modules/gantt")(Highcharts);
+const path = require("path");
 
 const fpath = "../schedule.xlsx";
+const title = path.basename(fpath, ".xlsx");
 var datas = [];
 
 xlsxFile(fpath, { getSheets: true }).then((sheets) => {
@@ -22,12 +21,12 @@ xlsxFile(fpath, { getSheets: true }).then((sheets) => {
 
     Highcharts.ganttChart("container", {
       title: {
-        text: "综合布线施工进度计划",
+        text: title,
       },
 
       series: [
         {
-          name: "三星工厂综合布线",
+          name: title,
           data: datas,
         },
       ],
