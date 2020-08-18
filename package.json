@@ -4,9 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nw src/",
+    "prod": "nwbuild --platforms win32,win64,linux32,linux64 --buildDir dist/ src/"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nw-builder": "^3.5.7"
+  },
+  "dependencies": {
+    "nw": "^0.47.3"
+  }
 }

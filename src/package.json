@@ -2,14 +2,28 @@
   "name": "src",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "window": {
+    "title": "Project manager Helper",
+    "icon": "icon.svg",
+    "toolbar": true,
+    "frame": false,
+    "width": 800,
+    "height": 500,
+    "position": "center",
+    "min_width": 400,
+    "min_height": 200,
+    "max_width": 800,
+    "max_height": 600
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "highcharts": "^8.1.2",
     "read-excel-file": "^4.0.7"
   }
 }
