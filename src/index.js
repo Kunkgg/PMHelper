@@ -1,44 +1,49 @@
 const xlsxFile = require("read-excel-file/node");
 const path = require("path");
 
-const fpath = "../schedule.xlsx";
-const title = path.basename(fpath, ".xlsx");
-var datas = [];
+function chooseFile(name) {
+  var chooser = document.querySelector(name);
+  chooser.addEventListener(
+    "change",
+    function (evt) {
+      console.log(this.value);
+      drawChart(this.value);
+    },
+    false
+  );
 
-xlsxFile(fpath, { getSheets: true }).then((sheets) => {
-  // sheets.forEach((obj) => {
-  //   console.log(obj.name);
-  // });
+  chooser.click();
+}
+chooseFile("#fileDialog");
 
-  xlsxFile(fpath, { sheet: sheets[0].name }).then((rows) => {
-    console.log(rows);
-    console.log(rows[0]);
-    console.log(rows[1]);
-    console.log(rows[2]);
+function drawChart(fpath) {
+  // console.log(fpath);
+  const title = path.basename(fpath, ".xlsx");
 
-    var datas = formatData(rows);
-    console.log(datas);
+  xlsxFile(fpath, { getSheets: true }).then((sheets) => {
+    xlsxFile(fpath, { sheet: sheets[0].name }).then((rows) => {
+      var datas = formatData(rows);
+      console.log(datas);
 
-    Highcharts.ganttChart("container", {
-      title: {
-        text: title,
-      },
-
-      series: [
-        {
-          name: title,
-          data: datas,
+      Highcharts.ganttChart("container", {
+        title: {
+          text: title,
         },
-      ],
+        series: [
+          {
+            name: title,
+            data: datas,
+          },
+        ],
+      });
     });
-    return datas;
   });
-});
+}
 
 function formatData(rows) {
   var header = rows[0];
   console.log(header);
-  // var datas = [];
+  var datas = [];
 
   rows.slice(1).forEach((row) => {
     var data = {};
