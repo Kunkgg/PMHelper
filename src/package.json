@@ -1,11 +1,9 @@
 {
-  "name": "src",
+  "name": "PMHelper",
   "version": "1.0.0",
-  "description": "",
+  "description": "Generate gantt chart from schedule excel.",
   "main": "index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "window": {
     "title": "Project manager Helper",
     "icon": "icon.svg",

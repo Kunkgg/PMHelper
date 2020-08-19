@@ -1,17 +1,19 @@
 {
-  "name": "PMHepler",
+  "name": "PMHelper",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nw src/",
-    "prod": "nwbuild --platforms win32,win64,linux64 --buildDir dist/ src/"
+    "prod": "nwbuild --platforms win64 --buildDir dist/ src/",
+    "dist": "build --tasks win-x86,win-x64,linux-x86,linux-x64 --mirror https://dl.nwjs.io/ ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nw-builder": "^3.5.7"
+    "nw-builder": "^3.5.7",
+    "nwjs-builder-phoenix": "^1.15.0"
   },
   "dependencies": {
     "nw": "^0.47.3"
